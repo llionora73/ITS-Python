@@ -37,3 +37,5 @@ eds.setAge(47)
 
 print("....")
 eds.displayData()
+
+print(eds.getName(), eds.getLastname(), eds.getAge())
