@@ -1,0 +1,59 @@
+# Scrivi una funzione che riceva in input due liste di interi della stessa lunghezza.
+# La funzione deve calcolare la somma elemento per elemento e restituire una nuova lista contenente i risultati.
+# For example:
+# print(somma_elementi([1,1,1],[1,1,1]))
+# [2, 2, 2]
+
+def somma_elementi(x: list[int], y: list[int]) -> list[int]:
+    if len(x) == len(y):
+        z = []  
+        for i in range(len(x)):  
+            z.append(x[i] + y[i])  
+        return z 
+    else:
+        print("Error")
+        return [] 
+    
+print(somma_elementi([1,2,3],[4,5,6]))
+print(somma_elementi([1,2,3,4],[4,5,6]))
+
+# Hai una lista di numeri interi. Il tuo compito è riorganizzare questa lista in modo che:
+# tutti i numeri pari vengano prima di tutti i numeri dispari;
+# l’ordine relativo tra pari e dispari va mantenuto;
+# l’obiettivo è solo separare i pari dai dispari, con i pari che vengono per primi.
+# For example:
+# print(even_odd_pattern([3, 6, 1, 8, 4, 7]))
+# [6, 8, 4, 3, 1, 7]
+
+def even_odd_pattern(numbers: list[int]) -> list[int]:
+    numbers_copy = []  
+    for num in numbers:
+        if num % 2 != 0:
+            numbers.remove(num)
+            numbers_copy.append(num)  
+    return numbers + numbers_copy
+
+print(even_odd_pattern([3, 6, 1, 8, 4, 7, -1]))
+
+# Hai ricevuto una lista di numeri interi, contenente valori compresi tra 1 e n, dove n è la lunghezza della lista. 
+# Tuttavia, alcuni numeri potrebbero mancare: la lista può contenere duplicati, ma non tutti i numeri da 1 a n sono presenti.
+# Il tuo compito è individuare i numeri mancanti.
+# Scrivi una funzione che, data in input una lista, restituisca una nuova lista ordinata contenente tutti i numeri da 1 a n che non sono presenti nella lista originale.
+# For example:
+# print(find_disappeared_numbers([4,3,2,7,8,2,3,1]))
+# [5, 6]
+
+def find_disappeared_numbers(nums: list[int]) -> list[int]: 
+    nums.sort()  
+    nums_copy = list(range(nums[0], nums[-1] + 1))
+    return list(set(nums_copy) - set(nums))
+
+print(find_disappeared_numbers([4, 3, 2, 7, 8, 2, 3, 1]))
+    
+       
+def find_disappeared_numbers(nums: list[int]) -> list[int]:
+    n = len(nums)
+    nums_set = set(nums)  
+    return [i for i in range(1, n + 1) if i not in nums_set]
+
+print(find_disappeared_numbers([4, 3, 2, 7, 8, 2, 3, 1]))
